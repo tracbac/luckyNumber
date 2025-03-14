@@ -26,7 +26,7 @@ document.getElementById('drawButton').addEventListener('click', function() {
 
     const interval = setInterval(() => {
         // Tạo số ngẫu nhiên từ 1 đến 99
-        currentNumber = Math.floor(Math.random() * 99) + 1;
+        currentNumber = Math.floor(Math.random() * 30) + 1;
         resultElement.innerText = currentNumber < 10 ? '0' + currentNumber : currentNumber;
 
         // Tăng số lần nhảy
