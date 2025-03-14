@@ -1,21 +1,14 @@
 let clickCount = 0; // Biến đếm số lần nhấn nút
-let isSpinning = false; // Biến theo dõi trạng thái quay
 
 document.getElementById('drawButton').addEventListener('click', function() {
     const resultElement = document.getElementById('result');
     const spinSound = document.getElementById('spinSound');
     const resultSound = document.getElementById('resultSound');
 
-    // Ngăn không cho nhấn nút khi đang quay
-    if (isSpinning) return;
-
     clickCount++; // Tăng số lần nhấn nút
-    isSpinning = true; // Đánh dấu là đang quay
 
     // Phát âm thanh quay số
-    spinSound.play().catch(error => {
-        console.error("Không thể phát âm thanh quay số:", error);
-    });
+    spinSound.play();
 
     // Hiệu ứng nhảy số
     let currentNumber = 0;
@@ -45,18 +38,7 @@ document.getElementById('drawButton').addEventListener('click', function() {
             // Hiển thị số ngẫu nhiên cuối cùng
             resultElement.innerText = randomNumber < 10 ? '0' + randomNumber : randomNumber;
             // Phát âm thanh khi hiển thị kết quả
-            resultSound.play().catch(error => {
-                console.error("Không thể phát âm thanh kết quả:", error);
-            });
-            isSpinning = false; // Đánh dấu là không còn quay nữa
-
-            // Thêm lớp nhấp nháy
-            resultElement.classList.add('blink');
-
-            // Xóa lớp nhấp nháy sau 1 giây
-            setTimeout(() => {
-                resultElement.classList.remove('blink');
-            }, 1000);
+            resultSound.play();
         }
     }, 100); // Thời gian giữa các lần nhảy (100ms)
 });
